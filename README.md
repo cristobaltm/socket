@@ -1,18 +1,19 @@
-# Socket-server
+# Angular: Aplicaciones en tiempo real con sockets y rest
 
 ## 01-server
+Socket-server
 
-Reconstruir módulos de node
+1. Reconstruir módulos de node
 ```
 npm install
 ```
 
-Generar el dist
+2. Generar el dist
 ```
 tsc -w
 ```
 
-Levantar el servidor, cualquiera de estos dos comandos
+3. Levantar el servidor, cualquiera de estos dos comandos
 ```
 nodemon dist/
 node dist/
