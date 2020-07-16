@@ -15,3 +15,16 @@ export const message = ( client: Socket, io: socketIO.Server ) => {
         io.emit( 'new-message', payload );
     });
 }
+
+// Configuración de usuario
+export const configUser = ( client: Socket, io: socketIO.Server ) => {
+    client.on( 'config-user', ( payload: { name: string }, callback: VoidFunction ) => {
+        console.log(`Usuario configurado`, payload.name );
+
+        callback({
+            ok: true,
+            msg: `Usuario ${ payload.name } configurado`
+        });
+        // io.emit( 'login-user', payload );
+    });
+}

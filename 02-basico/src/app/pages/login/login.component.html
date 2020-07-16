@@ -1,1 +1,25 @@
-<p>login works!</p>
+<h1>Identificación de usuario</h1>
+<hr>
+
+<div class="row justify-content-center">
+    <div class="col-9">
+        <form
+            class="p-4"
+            (ngSubmit)="login()"
+        >
+            <input
+                type="text"
+                [(ngModel)]="username"
+                name="username"
+                class="form-control"
+                placeholder="Nombre de usuario"
+                autofocus="autofocus"
+            >
+
+            <button
+                [disabled]="username.trim().length === 0"
+                class="btn btn-primary btn-block margin-top-10"
+            >Ingresar</button>
+        </form>
+    </div>
+</div>
