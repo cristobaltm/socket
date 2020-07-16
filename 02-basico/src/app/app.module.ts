@@ -8,6 +8,9 @@ import { environment } from '../environments/environment.prod';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { FooterComponent } from './components/footer/footer.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { LoginComponent } from './pages/login/login.component';
+import { MessagesComponent } from './pages/messages/messages.component';
 const config: SocketIoConfig = { 
   url: environment.wsURL,
   options: {}
@@ -17,7 +20,10 @@ const config: SocketIoConfig = {
   declarations: [
     AppComponent,
     FooterComponent,
-    ChatComponent
+    ChatComponent,
+    UserListComponent,
+    LoginComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
