@@ -18,7 +18,7 @@ export const message = ( client: Socket, io: socketIO.Server ) => {
 
 // Configuración de usuario
 export const configUser = ( client: Socket, io: socketIO.Server ) => {
-    client.on( 'config-user', ( payload: { name: string }, callback: VoidFunction ) => {
+    client.on( 'config-user', ( payload: { name: string }, callback: Function ) => {
         console.log(`Usuario configurado`, payload.name );
 
         callback({
