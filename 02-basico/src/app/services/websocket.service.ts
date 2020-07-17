@@ -8,12 +8,13 @@ import { User } from '../classes/user.model';
 export class WebsocketService {
 
   public socketStatus: boolean;
-  public user: User;
+  public user: User = null;
 
   constructor(
     private socket: Socket
   ) {
     this.socketStatus = false;
+    this.loadStorage();
     this.checkStatus();
   }
 
@@ -40,10 +41,24 @@ export class WebsocketService {
   }
 
   loginWS( name?: string ) {
-    console.log( 'Configurar', name );
+    return new Promise( ( resolve, reject ) => {
 
-    this.emit( 'config-user', { name }, resp => {
-      console.log(resp);
+      this.emit( 'config-user', { name }, resp => {
+        this.user = new User( name );
+        this.saveStorage();
+        resolve();
+      });
+
     });
+  }
+
+  saveStorage() {
+    localStorage.setItem( 'user', JSON.stringify( this.user ));
+  }
+
+  loadStorage() {
+    if ( localStorage.getItem( 'user' ) ) {
+      this.user = JSON.parse( localStorage.getItem( 'user' ) );
+    }
   }
 }
