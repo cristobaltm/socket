@@ -15,6 +15,10 @@ router.post( '/mensajes', ( req: Request, res: Response ) => {
     const body = req.body.body;
     const from = req.body.from;
 
+    const payload = { from, body }
+    const server = Server.instance;
+    server.io.emit( 'message', payload );
+
     res.json({
         ok: true,
         body,
@@ -28,10 +32,8 @@ router.post( '/mensajes/:id', ( req: Request, res: Response ) => {
     const from = req.body.from;
     const id = req.params.id;
 
-    const payload = {
-        from,
-        body
-    }
+
+    const payload = { from, body }
     const server = Server.instance;
     server.io.in( id ).emit( 'private-message', payload );
 
