@@ -1,9 +1,20 @@
 import { Socket } from 'socket.io';
 import socketIO from 'socket.io';
+import { UserList } from '../classes/user-list';
+import { User } from '../classes/user';
 
+export const usersOnline = new UserList();
+
+// Conectar cliente
+export const connectClient = ( client: Socket ) => {
+    const user = new User( client.id );
+    usersOnline.addUser( user );
+}
+
+// Desconectar
 export const disconnect = ( client: Socket ) => {
     client.on( 'disconnect', () => {
-        console.log('Cliente desconectado');
+        usersOnline.deleteUser( client.id );
     });
 }
 
@@ -19,12 +30,11 @@ export const message = ( client: Socket, io: socketIO.Server ) => {
 // Configuración de usuario
 export const configUser = ( client: Socket, io: socketIO.Server ) => {
     client.on( 'config-user', ( payload: { name: string }, callback: Function ) => {
-        console.log(`Usuario configurado`, payload.name );
+        usersOnline.updateName( client.id, payload.name );
 
         callback({
             ok: true,
             msg: `Usuario ${ payload.name } configurado`
         });
-        // io.emit( 'login-user', payload );
     });
 }

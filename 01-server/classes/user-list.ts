@@ -35,7 +35,7 @@ export class UserList {
             }
         }
 
-        console.log( 'Actualizando usuario', this.list );
+        console.log( 'Actualizado usuario', this.list );
         return updated;
     }
 
@@ -73,6 +73,7 @@ export class UserList {
     public deleteUser( id: string ): User | undefined {
         const tempUser = this.getUser( id );
         this.list = this.list.filter( user => user.id !== id );
+        console.log( 'Usuario eliminado', this.list );
         return tempUser;
     }
 }
