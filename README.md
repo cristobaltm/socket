@@ -1,7 +1,8 @@
 # Angular: Aplicaciones en tiempo real con sockets y rest
 
 ## 01-server
-Socket-server
+
+### Sección 3: Configuración de Express, Rest Server en TypeScript
 
 1. Reconstruir módulos de node
 ```
@@ -22,6 +23,8 @@ node dist/
 ## 02-basico
 Angular App + Socket Server
 
+### Sección 4: Angular App + Socket Server
+
 1. Configuración de socket.io en nuestro backend.
 2. Implementación del patrón singleton en nuestra clase server.
 3. Conexión de Angular con nuestro servidor de sockets.
@@ -34,3 +37,13 @@ Creación de la interfaz de usuario para enviar mensajes y mostrarle al usuario 
 
 * [websocket.service.ts](https://github.com/cristobaltm/socket/blob/master/02-basico/src/app/services/websocket.service.ts)
 Construcción de una clase que podamos reutilizar fácilmente en un futuro, para no tener que configurar nada después, simplemente importar el servicio, configurar nuestro app.module y luego ya no hay que hacer nada más para trabajar con los sockets.
+
+### Sección 5: Identificar usuarios de sockets y mensajes a sockets vía Rest Services
+
+1. Rutas en Angular.
+2. Manejo e identificación del ID del socket con un usuario.
+3. Manejar usuarios en el backend.
+4. Mantener el nombre de usuario en reconexiones.
+5. Guards en Angular.
+6. Recibir mensajes privados.
+7. Enviar mensajes a todos los usuarios conectados mediante un servicio REST.
