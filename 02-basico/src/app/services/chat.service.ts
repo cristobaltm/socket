@@ -12,7 +12,7 @@ export class ChatService {
 
   sendMessage( message: string ) {
     const payload = {
-      from: 'Cristobal',
+      from: this.wsSrv.getUser().name,
       body: message
     };
 
