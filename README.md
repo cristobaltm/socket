@@ -47,3 +47,9 @@ Construcción de una clase que podamos reutilizar fácilmente en un futuro, para
 5. Guards en Angular.
 6. Recibir mensajes privados.
 7. Enviar mensajes a todos los usuarios conectados mediante un servicio REST.
+
+### Sección 6: Manejo de las lista de usuarios vía sockets y servicios REST
+1. Obtener todos los IDs de los usuarios conectados mediante servicios REST.
+2. Obtener nombres, sala y IDs de los usuarios conectados a servicios REST.
+3. Mostrar los usuarios en nuestra aplicación de Angular.
+4. Cerrar sesión del usuario conectado por sockets.
