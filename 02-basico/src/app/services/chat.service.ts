@@ -30,4 +30,8 @@ export class ChatService {
   getUsersOnline() {
     return this.wsSrv.listen( 'users-online' );
   }
+
+  emitUsersOnline() {
+    this.wsSrv.emit( 'get-users-online' );
+  }
 }

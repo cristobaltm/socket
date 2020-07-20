@@ -42,3 +42,10 @@ export const configUser = ( client: Socket, io: socketIO.Server ) => {
         });
     });
 }
+
+// Obtener usuarios
+export const getUsersOnline = ( client: Socket, io: socketIO.Server ) => {
+    client.on( 'get-users-online', () => {
+        io.to( client.id ).emit( 'users-online', usersOnline.getList() );
+    });
+}

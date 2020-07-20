@@ -17,6 +17,7 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
     this.usersOnlineOBS = this.chatSrv.getUsersOnline();
+    this.chatSrv.emitUsersOnline();
   }
 
 }
