@@ -26,4 +26,8 @@ export class ChatService {
   getPrivateMessages() {
     return this.wsSrv.listen( 'private-message' );
   }
+
+  getUsersOnline() {
+    return this.wsSrv.listen( 'users-online' );
+  }
 }

@@ -12,9 +12,11 @@ export const connectClient = ( client: Socket ) => {
 }
 
 // Desconectar
-export const disconnect = ( client: Socket ) => {
+export const disconnect = ( client: Socket, io: socketIO.Server ) => {
     client.on( 'disconnect', () => {
         usersOnline.deleteUser( client.id );
+
+        io.emit( 'users-online', usersOnline.getList() );
     });
 }
 
@@ -31,6 +33,8 @@ export const message = ( client: Socket, io: socketIO.Server ) => {
 export const configUser = ( client: Socket, io: socketIO.Server ) => {
     client.on( 'config-user', ( payload: { name: string }, callback: Function ) => {
         usersOnline.updateName( client.id, payload.name );
+
+        io.emit( 'users-online', usersOnline.getList() );
 
         callback({
             ok: true,

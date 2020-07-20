@@ -44,7 +44,7 @@ export class UserList {
  * @return Lista de usuarios
  */
     public getList(): User[] {
-        return this.list;
+        return this.list.filter( user => user.name !== 'Sin nombre');
     }
 
 /**

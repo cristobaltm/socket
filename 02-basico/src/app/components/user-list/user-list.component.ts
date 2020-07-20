@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ChatService } from '../../services/chat.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-list',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListComponent implements OnInit {
 
-  constructor() { }
+  usersOnlineOBS: Observable<any>;
+
+  constructor(
+    public chatSrv: ChatService
+  ) { }
 
   ngOnInit(): void {
+    this.usersOnlineOBS = this.chatSrv.getUsersOnline();
   }
 
 }
