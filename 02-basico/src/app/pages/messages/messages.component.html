@@ -1,6 +1,12 @@
 <h1>Usuario: <small>{{ wsSrv.user.name }}</small></h1>
 <hr>
 
+<div class="text-right">
+    <button class="btn btn-danger" (click)="logOut()">
+        Salir
+    </button>
+</div>
+
 <div class="row">
     <div class="col-4">
         <app-user-list></app-user-list>
