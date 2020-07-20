@@ -45,4 +45,23 @@ router.post( '/mensajes/:id', ( req: Request, res: Response ) => {
     });
 });
 
+// Servicio para obtener todos los IDs de usuarios conectados
+router.get( '/userlist', ( req: Request, res: Response ) => {
+    const server = Server.instance;
+    server.io.clients( ( err: any, clients: string[] ) => {
+        if ( err ) {
+            return res.json({
+                ok: false,
+                err
+            });
+        };
+
+        res.json({
+            ok: true,
+            clients
+        });
+    });
+
+});
+
 export default router;
