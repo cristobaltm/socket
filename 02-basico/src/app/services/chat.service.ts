@@ -20,7 +20,7 @@ export class ChatService {
   }
 
   getMessages() {
-    return this.wsSrv.listen( 'message' );
+    return this.wsSrv.listen( 'new-message' );
   }
 
   getPrivateMessages() {

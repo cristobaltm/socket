@@ -17,7 +17,7 @@ router.post( '/mensajes', ( req: Request, res: Response ) => {
 
     const payload = { from, body }
     const server = Server.instance;
-    server.io.emit( 'message', payload );
+    server.io.emit( 'new-message', payload );
 
     res.json({
         ok: true,
