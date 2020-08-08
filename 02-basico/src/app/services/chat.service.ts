@@ -20,18 +20,10 @@ export class ChatService {
   }
 
   getMessages() {
-    return this.wsSrv.listen( 'new-message' );
+    return this.wsSrv.listen( 'message' );
   }
 
   getPrivateMessages() {
     return this.wsSrv.listen( 'private-message' );
-  }
-
-  getUsersOnline() {
-    return this.wsSrv.listen( 'users-online' );
-  }
-
-  emitUsersOnline() {
-    this.wsSrv.emit( 'get-users-online' );
   }
 }

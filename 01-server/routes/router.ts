@@ -1,6 +1,5 @@
 import { Router, Request, Response } from "express";
 import Server from "../classes/server";
-import { usersOnline } from "../sockets/sockets";
 
 const router = Router();
 
@@ -18,7 +17,7 @@ router.post( '/mensajes', ( req: Request, res: Response ) => {
 
     const payload = { from, body }
     const server = Server.instance;
-    server.io.emit( 'new-message', payload );
+    server.io.emit( 'message', payload );
 
     res.json({
         ok: true,
@@ -43,33 +42,6 @@ router.post( '/mensajes/:id', ( req: Request, res: Response ) => {
         body,
         from,
         id
-    });
-});
-
-// Servicio para obtener todos los IDs de usuarios conectados
-router.get( '/userlist', ( req: Request, res: Response ) => {
-    const server = Server.instance;
-    server.io.clients( ( err: any, clients: string[] ) => {
-        if ( err ) {
-            return res.json({
-                ok: false,
-                err
-            });
-        };
-
-        res.json({
-            ok: true,
-            clients
-        });
-    });
-
-});
-
-// Obtener usuario y sus nombres
-router.get( '/userlist/detail', ( req: Request, res: Response ) => {    
-    res.json({
-        ok: true,
-        clients: usersOnline.getList()
     });
 });
 
