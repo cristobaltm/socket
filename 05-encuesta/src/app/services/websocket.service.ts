@@ -14,7 +14,7 @@ export class WebsocketService {
     this.checkStatus();
   }
 
-  checkStatus() {
+  checkStatus(): void {
     this.socket.on('connect', () => {
       this.socketStatus = true;
     });
@@ -24,11 +24,11 @@ export class WebsocketService {
     });
   }
 
-  emit( evento: string, payload?: any, callback?: Function ) {
+  emit( evento: string, payload?: any, callback?: any ): void {
     this.socket.emit( evento, payload, callback );
   }
 
-  listen( evento: string ) {
+  listen( evento: string ): any {
     return this.socket.fromEvent( evento );
   }
 }

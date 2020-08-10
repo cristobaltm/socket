@@ -14,9 +14,9 @@ router.post( '/graph', ( req: Request, res: Response ) => {
 
     const option = Number( req.body.option );
     const value = Number( req.body.value ) || 1;
-    const server = Server.instance;
-
     graph.increaseValue( option, value );
+    
+    const server = Server.instance;
     server.io.emit( 'change-graph', graph.getGraphData() );
 
     res.json( graph.getGraphData() );

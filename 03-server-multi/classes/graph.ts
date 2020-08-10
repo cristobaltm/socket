@@ -22,7 +22,7 @@ export class GraphData {
     getGraphData() {
         return [{
             data: this.values,
-            label: this.labels
+            label: 'Preguntas'
         }];
     }
 
